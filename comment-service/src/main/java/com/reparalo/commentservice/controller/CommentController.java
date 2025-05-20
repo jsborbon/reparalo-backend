@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.ExecutionException;
 
 @RestController
-@RequestMapping("/api/comments")
+@RequestMapping("/comments")
 public class CommentController {
 
     private final CommentService commentService;
@@ -36,7 +36,25 @@ public class CommentController {
         return new ResponseEntity<>(createdComment, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
+    //TODO: This is the code created
+    @GetMapping({"tutorial/{tutorialId}"})
+    public ResponseEntity<List<CommentDTO>> getCommentsByTutorialId(
+            @PathVariable() String tutorialId) throws ExecutionException, InterruptedException {
+            return getCommentsByTutorial(tutorialId);
+    }
+
+    private ResponseEntity<List<CommentDTO>> getCommentsByTutorial(String tutorialId) throws ExecutionException, InterruptedException {
+        // Implementar la lógica para obtener comentarios por tutorialId
+        // Aquí puedes llamar al servicio correspondiente y devolver la respuesta adecuada
+        List<CommentDTO> comments = commentService.getCommentsByTargetIdAndType(tutorialId, "tutorial");
+
+        return ResponseEntity.ok(comments);
+
+    }
+
+
+    //
+
     public ResponseEntity<CommentDTO> getCommentById(@PathVariable String id) throws ExecutionException, InterruptedException {
         try {
             CommentDTO commentDTO = commentService.getCommentById(id);
