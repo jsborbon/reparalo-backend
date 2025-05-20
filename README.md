@@ -54,3 +54,5 @@ Cada microservicio expone su documentación Swagger UI en la ruta `/swagger-ui.h
 ## Seguridad
 
 Todos los microservicios utilizan Firebase Authentication para la verificación de tokens JWT. La autorización basada en roles se implementa a nivel de cada servicio.
+
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/jsborbon/Reparalo-backend)
